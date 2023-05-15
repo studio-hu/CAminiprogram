@@ -1,0 +1,4 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<van-nav-bar title="关于我们" fixed placeholder border="{{false}}" bind:click-left="onClickLeft">
+    <van-icon name="arrow-left" slot="left" />
+</van-nav-bar>

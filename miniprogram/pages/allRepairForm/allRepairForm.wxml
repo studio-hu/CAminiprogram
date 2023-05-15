@@ -1,0 +1,150 @@
+<!--pages/allRepairForm/allRepairForm.wxml-->
+<van-nav-bar title="维修单" fixed placeholder border="{{false}}" bind:click-left="onClickLeft" custom-class="navbar"
+    title-class="navtitle" id="nav">
+    <van-icon name="arrow-left" slot="left" />
+</van-nav-bar>
+<view class="container">
+    <view>
+        <van-tabs animated swipeable active="{{tab}}" id="tabs" color="E54D42" tab-active-class="active"
+            wrap-class="wrap">
+            <van-tab title="维修单" name="0">
+                <scroll-view scroll-y bounces bindscrolltolower="touchBottom" data-type="all" style="height: {{height}}px;">
+                    <view class="my-repair-list">
+                        <view class="my-repair-item" wx:for="{{repairListAll}}" wx:key="id" bindtap="showRepair"
+                            data-value="{{item}}">
+                            <view class="head">
+                                <wxs src="../../utils/tools.wxs" module="tools" />
+                                <text>单号：{{tools.format(item.id,item.createtime)}}</text>
+                                <span>
+                                    <van-tag plain
+                                        type="{{item.state===0?'warning':item.state===1?'primary':'success'}}">
+                                        {{item.state===0?'待处理':item.state===1?'已接单':'已完成'}}
+                                    </van-tag>
+                                </span>
+                            </view>
+                            <van-divider custom-style="margin:0;" />
+                            <view class="msg">
+                                <view class="msg-item">
+                                    <text>预约时间</text>
+                                    <text>{{item.createtime}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>报修人</text>
+                                    <text>{{item.realname}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>宿舍号</text>
+                                    <text>P111</text>
+                                </view>
+                            </view>
+                        </view>
+                        <van-empty wx:if="{{repairListAll.length===0}}" description="暂无维修单" />
+                    </view>
+                </scroll-view>
+            </van-tab>
+            <van-tab title="待处理" name="1" info="{{repairListPend.length>0?repairListPend.length:''}}">
+                <scroll-view scroll-y bounces bindscrolltolower="touchBottom"  data-type="pend"  style="height: {{height}}px;">
+                    <view class="my-repair-list">
+                        <view class="my-repair-item" wx:for="{{repairListPend}}" wx:key="id" bindtap="showRepair"
+                            data-value="{{item}}">
+                            <view class="head">
+                                <text>单号：{{tools.format(item.id,item.createtime)}}</text>
+                                <span>
+                                    <van-tag plain
+                                        type="{{item.state===0?'warning':item.state===1?'primary':'success'}}">
+                                        {{item.state===0?'待处理':item.state===1?'已接单':'已完成'}}
+                                    </van-tag>
+                                </span>
+                            </view>
+                            <van-divider custom-style="margin:0;" />
+                            <view class="msg">
+                                <view class="msg-item">
+                                    <text>预约时间</text>
+                                    <text>{{item.createtime}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>报修人</text>
+                                    <text>{{item.realname}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>宿舍号</text>
+                                    <text>P111</text>
+                                </view>
+                            </view>
+                        </view>
+                        <van-empty wx:if="{{repairListPend.length===0}}" description="暂无维修单" />
+                    </view>
+                </scroll-view>
+            </van-tab>
+            <van-tab title="已接单" name="2" info="{{repairListGet.length>0?repairListGet.length:''}}">
+                <scroll-view scroll-y bounces bindscrolltolower="touchBottom"  data-type="get"  style="height:{{height}}px;">
+                    <view class="my-repair-list">
+                        <view class="my-repair-item" wx:for="{{repairListGet}}" wx:key="id" bindtap="showRepair"
+                            data-value="{{item}}">
+                            <view class="head">
+                                <text>单号：{{tools.format(item.id,item.createtime)}}</text>
+                                <span>
+                                    <van-tag plain
+                                        type="{{item.state===0?'warning':item.state===1?'primary':'success'}}">
+                                        {{item.state===0?'待处理':item.state===1?'已接单':'已完成'}}
+                                    </van-tag>
+                                </span>
+                            </view>
+                            <van-divider custom-style="margin:0;" />
+                            <view class="msg">
+                                <view class="msg-item">
+                                    <text>预约时间</text>
+                                    <text>{{item.createtime}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>报修人</text>
+                                    <text>{{item.realname}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>宿舍号</text>
+                                    <text>P111</text>
+                                </view>
+                            </view>
+                        </view>
+                        <van-empty wx:if="{{repairListGet.length===0}}" description="暂无维修单" />
+                    </view>
+                </scroll-view>
+            </van-tab>
+            <van-tab title="已完成" name="3">
+                <scroll-view scroll-y bounces bindscrolltolower="touchBottom"  data-type="done"  style="height: {{height}}px;">
+                    <view class="my-repair-list">
+                        <view class="my-repair-item" wx:for="{{repairListDone}}" wx:key="id" bindtap="showRepair"
+                            data-value="{{item}}">
+                            <view class="head">
+                                <text>单号：{{tools.format(item.id,item.createtime)}}</text>
+                                <span>
+                                    <van-tag plain
+                                        type="{{item.state===0?'warning':item.state===1?'primary':'success'}}">
+                                        {{item.state===0?'待处理':item.state===1?'已接单':'已完成'}}
+                                    </van-tag>
+                                </span>
+                            </view>
+                            <van-divider custom-style="margin:0;" />
+                            <view class="msg">
+                                <view class="msg-item">
+                                    <text>预约时间</text>
+                                    <text>{{item.createtime}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>报修人</text>
+                                    <text>{{item.realname}}</text>
+                                </view>
+                                <view class="msg-item">
+                                    <text>宿舍号</text>
+                                    <text>P111</text>
+                                </view>
+                            </view>
+                        </view>
+                        <van-empty wx:if="{{repairListDone.length===0}}" description="暂无维修单" />
+                    </view>
+
+                </scroll-view>
+            </van-tab>
+        </van-tabs>
+    </view>
+</view>

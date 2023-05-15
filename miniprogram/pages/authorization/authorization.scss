@@ -1,0 +1,33 @@
+/* pages/authorization/authorization.wxss */
+page{
+    background-color: #ffffff;
+}
+.container {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .img {
+        width: 400rpx;
+    }
+
+    span {
+        font-size: 40rpx;
+        font-weight: bold;
+        margin-bottom: 20rpx;
+    }
+    text{
+        font-size: 26rpx;
+        color: #bbbbbb;
+        margin-top: 5rpx;
+    }
+    .btn-box{
+        width: 600rpx;
+        margin: 100rpx 0;
+        .btn{
+            border-radius: 10rpx;
+        }
+    }
+}

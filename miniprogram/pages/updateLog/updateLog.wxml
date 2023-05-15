@@ -1,0 +1,4 @@
+<!--pages/updateLog/updateLog.wxml-->
+<van-nav-bar title="更新日志" fixed placeholder border="{{false}}" bind:click-left="onClickLeft">
+    <van-icon name="arrow-left" slot="left" />
+</van-nav-bar>
