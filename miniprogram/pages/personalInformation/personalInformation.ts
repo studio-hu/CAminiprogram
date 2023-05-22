@@ -59,8 +59,9 @@ Page({
             duration: 0
         });
         let fileUrl = res.tempFiles[0].tempFilePath
-        let result = await uploadAvatar(fileUrl,'Image')
-        console.log(result);
+        console.log('fileUrl',fileUrl);
+        let result = await uploadAvatar(fileUrl, 'Image')
+        console.log('result', result);
         // 服务器返回的图片地址
         const imgUrl = JSON.parse(result.data).image
         let id = this.data.id

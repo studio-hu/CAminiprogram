@@ -38,7 +38,17 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        // beforeClose:(action: Action) => new Promise(async (resolve) => {
+        //     // 返回true可关闭对话框
+        //     if (action === 'confirm') {
+        //         // 点击确认
+        //         await login()
+        //         resolve(true);
+        //     } else {
+        //         // 点击取消
+        //         resolve(true)
+        //     }
+        // })
     },
 
     handleConfirm() {
@@ -51,6 +61,7 @@ Page({
             title: '微信授权',
             message: '计协报修小程序申请获取账号信息',
             beforeClose
+            // beforeClose:this.data.beforeClose
         }).then(() => {
             // 确定
         }).catch(() => {

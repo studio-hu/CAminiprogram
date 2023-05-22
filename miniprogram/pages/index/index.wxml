@@ -5,7 +5,9 @@
         <swiper indicator-dots autoplay interval="{{4500}}" duration="{{1500}}">
             <swiper-item class="img-item" wx:for="{{imgList}}" wx:for-item="url" wx:key="url">
                 <!-- https://picsum.photos/seed/1/390/150 -->
-                <van-image width="100%" height="100%" fit="widthFix" src="{{url}}" />
+                <van-image use-loading-slot width="100%" height="100%" fit="widthFix" src="{{url}}">
+                    <van-loading slot="loading" type="spinner" size="20" vertical />
+                </van-image>
             </swiper-item>
         </swiper>
     </view>
@@ -38,7 +40,7 @@
                     </view>
                 </view>
             </van-grid-item>
-            <van-grid-item use-slot content-class="grid-item">
+            <van-grid-item use-slot content-class="grid-item" bind:click="toast">
                 <view class="item">
                     <view class="image-item bg3">
                         <van-image use-loading-slot custom-class="img" src="/static/images/luckyDraw.png">
@@ -51,7 +53,7 @@
                     </view>
                 </view>
             </van-grid-item>
-            <van-grid-item use-slot content-class="grid-item">
+            <van-grid-item use-slot content-class="grid-item" bind:click="toast">
                 <view class="item">
                     <view class="image-item bg4">
                         <van-image use-loading-slot custom-class="img" src="/static/images/activity.png">
@@ -91,3 +93,4 @@
         </view>
     </block>
 </view>
+<van-toast id="van-toast" />

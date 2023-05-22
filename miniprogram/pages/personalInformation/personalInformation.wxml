@@ -7,7 +7,7 @@
     <van-cell-group inset custom-class="card">
         <van-cell center>
             <view class="avatar">
-                <van-image round use-loading-slot width="140rpx" height="140rpx" bindtap="uploadImg"
+                <van-image round use-loading-slot width="140rpx" height="140rpx" bindtap="uploadImg" fit="cover"
                     src="{{headshot===null?'https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132':headshot}}">
                     <van-loading slot="loading" type="spinner" size="20" vertical />
                 </van-image>

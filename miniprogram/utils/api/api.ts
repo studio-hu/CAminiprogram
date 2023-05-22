@@ -15,7 +15,7 @@ const getUserByOpenId = (data: Object) => request('/user/Obscure', 'POST', data)
 /**
  * 根据openid获取对应的维修单
  */
-const getRepairFormByOpenId = (data: Object) => request('/repairtable/Page', 'POST', data)
+const getRepairFormByOpenId = (openid: string) => request(`/repairtable/Page?openid=${openid}&page=1&size=1000`, 'POST')
 
 /**
  * 更新用户信息

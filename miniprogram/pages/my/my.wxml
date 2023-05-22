@@ -4,7 +4,7 @@
 <view>
     <!-- <van-button bindtap="login">登录</van-button> -->
     <view class="userMessage" bindtap="personalInformation">
-        <van-image round use-loading-slot custom-class="avatar"
+        <van-image round use-loading-slot custom-class="avatar" fit="cover"
             src="{{headshot===null?'https://thirdwx.qlogo.cn/mmopen/vi_32/POgEwh4mIHO4nibH0KlMECNjjGxQUq24ZEaGT4poC6icRiccVGKSyXwibcPq4BWmiaIGuG1icwxaQX6grC9VemZoJ8rg/132':headshot}}">
             <van-loading slot="loading" type="spinner" size="20" vertical />
         </van-image>

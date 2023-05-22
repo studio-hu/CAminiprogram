@@ -1,5 +1,6 @@
 // pages/my/my.ts
 import { getUserByOpenId, getRepairFormByOpenId } from "../../utils/api/api"
+
 Page({
 
     /**
@@ -15,7 +16,6 @@ Page({
         wx.reLaunch({
             url: '../authorization/authorization'
         })
-
     },
     personalInformation(): void {
         let openid: string = wx.getStorageSync('openid')
@@ -35,7 +35,7 @@ Page({
                         }
                     })
                 }
-            }
+            } 
         })
     },
 
@@ -45,7 +45,7 @@ Page({
      */
     onLoad() {
         let openid: string = wx.getStorageSync('openid')
-        getRepairFormByOpenId({ openid }).then(res => {
+        getRepairFormByOpenId( openid ).then(res => {
             let list = res.data.data.reverse()
             // @ts-ignore
             let repairListPend = list.filter(item => item.state === 0)

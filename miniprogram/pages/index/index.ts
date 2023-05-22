@@ -1,4 +1,5 @@
 // pages/index/index.ts
+import Toast from '@vant/weapp/toast/toast';
 import { getUserByOpenId } from "../../utils/api/api"
 interface Idata {
     /**
@@ -14,12 +15,15 @@ Page({
     data: {
         imgList: [
             'http://allhope.work/img/ca1.jpg',
-            'http://allhope.work/img/ca2.png',
-            'http://allhope.work/img/ca3.png',
+            'http://allhope.work/img/ca2.jpg',
+            'http://allhope.work/img/ca3.jpg',
             'http://allhope.work/img/ca4.jpg'
         ]
 
     } as Idata,
+    toast():void{
+        Toast('此模块开发中')
+    },
 
     /**
      * 生命周期函数--监听页面加载
@@ -30,9 +34,11 @@ Page({
             wx.reLaunch({
                 url: '../authorization/authorization'
             })
+            return;
         }
         getUserByOpenId({openid}).then(res => {
             if (res.data.code === 200) {
+                // 拿到repair的值来判断是否是管理员
                 let { repair } = res.data.data[0]
                 this.setData({
                     repair

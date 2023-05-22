@@ -69,7 +69,7 @@ Page({
             tab: options.tab
         })
         let openid: string = wx.getStorageSync('openid')
-        getRepairFormByOpenId({ openid }).then(res => {
+        getRepairFormByOpenId( openid ).then(res => {
             console.log(res);
             let list: IrepairList[] = res.data.data.reverse()
             let repairListPend: IrepairList[] = list.filter(item => item.state === 0)

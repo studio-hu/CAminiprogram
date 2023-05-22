@@ -5,7 +5,39 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        list: [{
+            version: 'v2.0.0',
+            date: '2023/5/17',
+            detail: [
+                'xxxx',
+                'ssss'
+            ]
+        }, {
+            version: 'v1.2.1',
+            date: '2021/10/04',
+            detail: [
+                '新增活动板块'
+            ]
+        }, {
+            version: 'v1.1.3',
+            date: '2021/09/04',
+            detail: [
+                '新增客服消息与转发功能'
+            ]
+        },
+        {
+            version: 'v1.1.2',
+            date: '2021/07/01',
+            detail: [
+                '修复了一些已知问题'
+            ]
+        },{
+            version: 'v1.1.1',
+            date: '2021/06/18',
+            detail: [
+                '1.0版本上线'
+            ]
+        }]
     },
     onClickLeft() {
         wx.navigateBack()
