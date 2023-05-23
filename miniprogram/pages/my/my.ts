@@ -7,21 +7,27 @@ Page({
      * 页面的初始数据
      */
     data: {
+        // 姓名
         realname: '',
+        // 头像地址
         headshot: '',
         repair: 0
     },
+    // 退出登录
     logout(): void {
+        // 清除所有缓存
         wx.clearStorage()
         wx.reLaunch({
             url: '../authorization/authorization'
         })
     },
+    // 展示用户详细信息
     personalInformation(): void {
         let openid: string = wx.getStorageSync('openid')
         wx.navigateTo({
             url: '../personalInformation/personalInformation',
             events: {
+                // 为指定事件添加一个监听器
                 refresh: () => {
                     getUserByOpenId({ openid }).then(res => {
                         if (res.data.code === 200) {
@@ -45,6 +51,7 @@ Page({
      */
     onLoad() {
         let openid: string = wx.getStorageSync('openid')
+        // 获取用户提交的维修单,状态为待处理的维修单
         getRepairFormByOpenId( openid ).then(res => {
             let list = res.data.data.reverse()
             // @ts-ignore
@@ -53,7 +60,7 @@ Page({
                 repairListPend
             })
         })
-
+        // 获取用户个人信息
         getUserByOpenId({ openid }).then(res => {
             if (res.data.code === 200) {
                 // @ts-ignore

@@ -8,20 +8,29 @@ Page({
      * 页面的初始数据
      */
     data: {
+        // id
         id: '',
+        // 姓名
         realname: '',
+        // 学号
         stunum: '',
+        // 手机号
         phone: '',
+        // 提示信息是否展示
         errorPhone: false,
+        // 提示信息是否展示
         errorUserName: false,
         fileList: [],
+        // 头像
         headshot: '',
+        // 宿舍号
         dormnum: ''
 
     },
     onClickLeft(): void {
         wx.navigateBack()
     },
+    // 点击保存
     async modifyInformation(): Promise<void> {
         Toast.loading({
             message: '保存中...',
@@ -40,12 +49,13 @@ Page({
         if (res.data.code === 200) {
             Toast.success('保存成功')
             const eventChannel = this.getOpenerEventChannel()
+            // 调用传过来的refresh函数,来刷新my页面的数据
             eventChannel.emit('refresh')
         }
 
     },
+    // 更新头像
     async uploadImg() {
-
         let res = await wx.chooseMedia({
             count: 1,
             mediaType: ['image', 'video'],
@@ -58,8 +68,10 @@ Page({
             forbidClick: true,
             duration: 0
         });
+        // 头像临时存储路径
         let fileUrl = res.tempFiles[0].tempFilePath
         console.log('fileUrl',fileUrl);
+        // 调用uploadAvatar接口,上传图片到腾讯云对象存储桶
         let result = await uploadAvatar(fileUrl, 'Image')
         console.log('result', result);
         // 服务器返回的图片地址
@@ -82,6 +94,7 @@ Page({
      */
     onLoad() {
         let openid: string = wx.getStorageSync('openid')
+        // 根据用户openid查询用户信息
         selectUserByOpenId({ openid }).then(res => {
             if (res.data.code === 200) {
                 // @ts-ignore

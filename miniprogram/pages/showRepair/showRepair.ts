@@ -59,11 +59,13 @@ Page({
             updatetime: ''
         },
         showDialog: false,
+        // 对话框关闭前的回调
         beforeClose: function (action: any) {
             return new Promise<boolean>(async (resolve) => {
                 // @ts-ignore
                 let state: number = this.data.state
                 if (action === 'confirm') {
+                    // 确认
                     // @ts-ignore
                     await this.getRepair(state * 1)
                     resolve(true)
@@ -93,16 +95,19 @@ Page({
         }
 
     },
+    // 对话框显示
     showDialog() {
         this.setData({
             showDialog: !this.data.showDialog
         })
     },
+    // 备注弹出层
     showRemark() {
         this.setData({
             remarkshow: !this.data.remarkshow
         })
     },
+    // 点击跟新维修单的状态为已接单
     async getRepair(state: number): Promise<void> {
         let repairid: string = wx.getStorageSync('openid')
         let id: number = this.data.currentValue.id
@@ -120,6 +125,7 @@ Page({
             setTimeout(() => wx.navigateBack({
                 success: () => {
                     let eventChannel = this.getOpenerEventChannel()
+                    // 调用传过来的refreshPage()函数,刷新allRepairForm页面的数据
                     eventChannel.emit("refreshPage")
                 }
             }), 500)
@@ -131,6 +137,7 @@ Page({
         let date = new Date();
         return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日 ${date.getHours()}:${date.getMinutes()}`;
     },
+     // 点击跟新维修单的状态为已完成
     async handleDone(): Promise<void> {
         let remark: string = this.data.remark
         if (remark === '') {
@@ -165,6 +172,7 @@ Page({
      */
     onLoad(options) {
         let openid:string=wx.getStorageSync('openid')
+        // 根据openid来获取用户信息
         selectUserByOpenId({openid}).then(res=>{
             if (res.data.code === 200) {
                 // @ts-ignore
@@ -175,6 +183,7 @@ Page({
             }
         })
         const eventChannel = this.getOpenerEventChannel()
+        // 获取从allRepairForm页面传过来的维修单数据
         eventChannel.on('currentValue', res => {
             let img = [{
                 url: res.data.image,

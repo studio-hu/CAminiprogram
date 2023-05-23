@@ -84,6 +84,7 @@ Page({
         let value: string = event.detail.trim()
         switch (type) {
             case "userName":
+                // 正则判断姓名格式
                 let reg_username: RegExp = /^(?:[\u4e00-\u9fa5·]{2,4})$/
                 let errorUserName: boolean = reg_username.test(event.detail)
                 this.setData({
@@ -92,6 +93,7 @@ Page({
                 })
                 break;
             case "phone":
+                // 正则判断手机号格式
                 let reg_phone: RegExp = /^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-79])|(?:5[0-35-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[1589]))\d{8}$/
                 let errorPhone: boolean = reg_phone.test(event.detail)
                 this.setData({
@@ -105,7 +107,6 @@ Page({
     },
     // 提交维修单
     async handleSubmit(): Promise<void> {
-
         Toast.loading({
             message: '提交中...',
             forbidClick: true,
@@ -143,7 +144,9 @@ Page({
         if (dormitoryNumber === '') {
             Toast.fail('请输入宿舍号'); return;
         }
+        // 图片临时存储地址
         let fileUrl = this.data.fileList[0].url
+        // 提交维修单
         let res = await sumbitRepair(fileUrl, 'image', {
             openid,
             phone,
@@ -164,7 +167,7 @@ Page({
             })
         }
     },
-    // 图片暂存
+    // 图片回显
     afterRead(event: any): void {
         const { file } = event.detail;
         let fileList: IfileList[] = []
@@ -197,6 +200,7 @@ Page({
         // console.log('e',event);
         const { file } = event.detail;
         // console.log('e', file);
+        // 通过filter函数来删除图片
         const fileList = this.data.fileList.filter(item => item.url != file.url)
         this.setData({
             fileList
@@ -208,6 +212,7 @@ Page({
      */
     onLoad() {
         let openid: string = wx.getStorageSync('openid')
+        // 根据openid获取用户个人信息
         getUserByOpenId({ openid }).then(res => {
             console.log(res);
             if (res.data.code === 200) {

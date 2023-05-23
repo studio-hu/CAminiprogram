@@ -1,3 +1,4 @@
+// 订单号格式化函数
 var format = function (id, createtime) {
     var y = createtime.indexOf('年')
     var m = createtime.indexOf('月')

@@ -48,10 +48,12 @@ Page({
     // 维修单详情页
     showRepair(event: any): void {
         console.log('event', event);
+        // 获取当前维修单的详细信息
         let currentValue: IrepairList = event.currentTarget.dataset.value
         wx.navigateTo({
             url: '../showRepair/showRepair',
             success: res => {
+                  // 通过eventChannel向被打开页面传送数据
                 res.eventChannel.emit('currentValue', {
                     data: currentValue
                 })
@@ -69,6 +71,7 @@ Page({
             tab: options.tab
         })
         let openid: string = wx.getStorageSync('openid')
+        // 根据用户openid来获取维修单信息
         getRepairFormByOpenId( openid ).then(res => {
             console.log(res);
             let list: IrepairList[] = res.data.data.reverse()

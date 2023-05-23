@@ -29,6 +29,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad() {
+        /**
+         * 判断用户是否已经登录,
+         * 如果从缓存中获取到openid,就说明已经授权登录过,
+         * 否则跳转到授权页面进行授权登录
+         */
         let openid: string = wx.getStorageSync('openid')
         if (openid === '') {
             wx.reLaunch({
@@ -36,9 +41,10 @@ Page({
             })
             return;
         }
+        // 根据openid获取用户信息
         getUserByOpenId({openid}).then(res => {
             if (res.data.code === 200) {
-                // 拿到repair的值来判断是否是管理员
+                // 拿到repair的值来判断是否是管理员(0:为普通用户,1:管理员)
                 let { repair } = res.data.data[0]
                 this.setData({
                     repair
