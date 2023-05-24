@@ -31,7 +31,7 @@ interface Ishowrepair {
     state: string,
     remarkshow: boolean,
     remark: string,
-    repairName:string
+    repairName: string
 }
 Page({
 
@@ -78,7 +78,7 @@ Page({
         remarkshow: false,
         size: { minHeight: 100 },
         remark: '',
-        repairName:''
+        repairName: ''
     } as Ishowrepair,
     // 路由后退
     onClickLeft(): void {
@@ -137,7 +137,7 @@ Page({
         let date = new Date();
         return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日 ${date.getHours()}:${date.getMinutes()}`;
     },
-     // 点击跟新维修单的状态为已完成
+    // 点击跟新维修单的状态为已完成
     async handleDone(): Promise<void> {
         let remark: string = this.data.remark
         if (remark === '') {
@@ -171,14 +171,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let openid:string=wx.getStorageSync('openid')
+        let openid: string = wx.getStorageSync('openid')
         // 根据openid来获取用户信息
-        selectUserByOpenId({openid}).then(res=>{
+        selectUserByOpenId({ openid }).then(res => {
             if (res.data.code === 200) {
                 // @ts-ignore
                 let { realname } = res.data.data[0]
                 this.setData({
-                    repairName:realname
+                    repairName: realname
                 })
             }
         })

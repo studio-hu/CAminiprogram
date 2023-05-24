@@ -184,7 +184,6 @@ Page({
     beforeRead(event: any): void {
         console.log("e", event);
         // 2M大小
-
         const SIZE: number = 2097152
         const { file, callback } = event.detail;
         let res: boolean = file.size < SIZE
@@ -192,14 +191,10 @@ Page({
             Toast.fail("图片大小超出限制")
         }
         callback(res);
-
-
     },
     // 删除图片
     delete(event: any): void {
-        // console.log('e',event);
         const { file } = event.detail;
-        // console.log('e', file);
         // 通过filter函数来删除图片
         const fileList = this.data.fileList.filter(item => item.url != file.url)
         this.setData({

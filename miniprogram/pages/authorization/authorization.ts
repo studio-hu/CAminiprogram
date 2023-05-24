@@ -26,7 +26,7 @@ const login = async () => {
     }
 }
 // 对话框关闭前的回调函数,返回true关闭对话框,false阻止对话框关闭
-const beforeClose = (action: Action) => new Promise(async (resolve) => {
+const beforeClose = (action: Action) => new Promise<boolean>(async (resolve) => {
     // 返回true可关闭对话框
     if (action === 'confirm') {
         // 点击确认
@@ -36,8 +36,7 @@ const beforeClose = (action: Action) => new Promise(async (resolve) => {
         // 点击取消
         resolve(true)
     }
-    // 类型断言,意思就是,告诉编译器,我这个函数返回的是什么
-}) as Promise<void | boolean> | void
+}) 
 
 
 Page({
@@ -59,7 +58,6 @@ Page({
             title: '微信授权',
             message: '计协报修小程序申请获取账号信息',
             beforeClose
-            // beforeClose:this.data.beforeClose
         }).then(() => {
             // 确定
         }).catch(() => {

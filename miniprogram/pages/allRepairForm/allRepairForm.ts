@@ -174,6 +174,7 @@ Page({
         let pagesAll = res.data.data.pages
         let current = res.data.data.current
         let repairList = res.data.data.records
+        // 使用filter()过滤，返回state为0的维修单
         let repairFilterList = repairList.filter((item: { state: number; }) => item.state === 0)
         this.setData({
             currentPagePend: current + 1,
@@ -268,6 +269,7 @@ Page({
                 });
             }
         });
+        // 微信开放文档有
         const query = wx.createSelectorQuery()
         query.select('#tabs').boundingClientRect()
         query.selectViewport().scrollOffset()
