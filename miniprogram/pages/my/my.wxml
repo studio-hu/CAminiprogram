@@ -1,0 +1,43 @@
+<!--pages/my/my.wxml-->
+<!-- f45359 -->
+<van-nav-bar title="个人中心" fixed placeholder border="{{false}}" />
+<view>
+    <!-- <van-button bindtap="login">登录</van-button> -->
+    <view class="userMessage" bindtap="personalInformation">
+        <van-image round use-loading-slot custom-class="avatar" fit="cover"
+            src="{{headshot==='http://www.seig.castudio.work/image/Grua.jpg'}}">
+            <van-loading slot="loading" type="spinner" size="20" vertical />
+        </van-image>
+        <view>
+            <span class="username">{{realname===null?'请完善个人信息':realname}}</span>
+            <view>
+                <van-tag color="#FFEDD9" text-color="#FEA65F" style="margin-right: 20rpx;">用户</van-tag>
+                <block wx:if="{{repair===1}}">
+                    <van-tag text-color="#E54D42" plain>管理员</van-tag>
+                </block>
+
+            </view>
+        </view>
+        <van-icon name="arrow" custom-class="icon" />
+    </view>
+    <view class="repair">
+        <view>
+            <van-grid square clickable column-num="3">
+                <van-grid-item icon="records" text="待处理" badge="{{repairListPend.length>0?repairListPend.length:''}}"
+                    url="../myRepairForm/myRepairForm?tab=1" />
+                <van-grid-item icon="completed" text="已完成" url="../myRepairForm/myRepairForm?tab=3" />
+                <van-grid-item icon="description" text="我的维修单" url="../myRepairForm/myRepairForm?tab=0" />
+            </van-grid>
+        </view>
+    </view>
+    <view class="menuList">
+        <van-cell-group inset custom-class="list">
+            <van-cell title="使用说明" icon="question-o" is-link clickable url="../instructionForUse/instructionForUse" />
+            <van-cell title="更新日志" icon="orders-o" is-link clickable url="../updateLog/updateLog" />
+            <van-cell title="关于我们" icon="info-o" is-link clickable url="../aboutUs/aboutUs" />
+        </van-cell-group>
+    </view>
+    <view class="logout">
+        <van-button color="#E54D42" block custom-class="logout-btn" bindtap="logout">退出登录</van-button>
+    </view>
+</view>

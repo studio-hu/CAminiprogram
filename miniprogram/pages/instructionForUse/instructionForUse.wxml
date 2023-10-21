@@ -1,0 +1,20 @@
+<!--pages/instructionForUse/instructionForUse.wxml-->
+<van-nav-bar title="使用说明" fixed placeholder border="{{false}}" bind:click-left="onClickLeft">
+    <van-icon name="arrow-left" slot="left" />
+</van-nav-bar>
+<view class="container">
+    <view class="helpmsg">
+        <h1>使用帮助</h1>
+        <h2>1、保修人员使用</h2>
+        <text>登录后填写个人信息完整后可进行报修，报修后可进入历史里查看报修信息</text>
+        <h2>2、维修人员使用</h2>
+        <text>登录后填写个人信息完整后等待管理员修改权限后重新登录可进行维修，受理维修后可进入历史里查看维修信息</text>
+    </view>
+    <view class="helpmsg">
+        <h1>隐私协议</h1>
+        <h2>1、用户微信数据</h2>
+        <text>用户在使用[GR计协小程序部分功能时将可能公开用户部分信息，包括(头像、昵称等)</text>
+        <h2>2、用户个人信息</h2>
+        <text>用户在使用IGR计协]小程序维修功能时将使用到个人信息，包括 (学号，手机号码，宿舍号等) ，计协承诺不以任何途径向第一方透露用户的个人信息。</text>
+    </view>
+</view>

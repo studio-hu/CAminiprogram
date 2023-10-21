@@ -1,0 +1,63 @@
+/* pages/repair/repair.wxss */
+
+.container {
+    overflow: auto;
+    padding-bottom: 100rpx;
+
+    .card {
+        margin: 50rpx 0;
+
+
+        .title {
+            font-size: 34rpx;
+            font-weight: bold;
+            position: relative;
+            padding-left: 20rpx;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10rpx;
+                height: 40rpx;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: #E54D42;
+            }
+        }
+
+        .label {
+            // text-align: center;
+        }
+
+        .img {
+            &::before {
+                content: '*';
+                position: absolute;
+                left: 17rpx;
+                color: #ee0a24;
+            }
+        }
+
+        .upload-img {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+
+            .count {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+
+    .btn {
+        width: 650rpx;
+        margin: 0 auto;
+
+        .submit-btn {
+            border-radius: 20rpx;
+        }
+    }
+}

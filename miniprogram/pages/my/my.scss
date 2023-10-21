@@ -1,0 +1,53 @@
+.userMessage {
+    width: 650rpx;
+    height: 200rpx;
+    background-color: #ffffff;
+    margin: 30rpx auto;
+    border-radius: 20rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .avatar {
+        width: 140rpx;
+        height: 140rpx;
+        margin: 0 30rpx;
+    }
+
+    .username {
+        font-size: 32rpx;
+        font-weight: bold;
+    }
+
+    .icon {
+        position: absolute;
+        right: 50rpx;
+    }
+}
+
+.repair {
+    width: 650rpx;
+    height: 200rpx;
+    background-color: #ffffff;
+    margin: 30rpx auto;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.menuList {
+    width: 650rpx;
+    margin: 30rpx auto;
+
+    .list {
+        margin: 0;
+    }
+}
+
+.logout {
+    width: 600rpx;
+    margin: 30rpx auto;
+
+    .logout-btn {
+        border-radius: 20rpx;
+    }
+}

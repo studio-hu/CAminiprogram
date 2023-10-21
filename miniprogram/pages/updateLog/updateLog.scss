@@ -1,0 +1,90 @@
+/* pages/updateLog/updateLog.wxss */
+.list {
+    overflow: auto;
+    margin: 50rpx 0;
+
+    .item {
+
+        .header {
+            width: 100vw;
+            height: 40rpx;
+            line-height: 60rpx;
+
+            .header-icon {
+                width: 16rpx;
+                box-shadow: 0px 0px 10rpx 4rpx #E54D42;
+                height: 16rpx;
+                border-radius: 50%;
+                background: #E54D42;
+                margin-left: 40rpx;
+                margin-top: 20rpx;
+                float: left;
+            }
+
+            .header-v {
+                width: 20rpx;
+                margin-left: 20rpx;
+                height: 20rpx;
+                color: #E54D42;
+                float: left;
+                font-size: 28rpx;
+                font-weight: bold;
+
+                .header-date {
+                    color: rgb(167, 167, 167);
+                    margin-left: 30rpx;
+                    font-size: 26rpx;
+                }
+            }
+
+
+        }
+
+        .content-box {
+            position: relative;
+            width: 85%;
+            background-color: #ffffff;
+            border-radius: 20rpx;
+            margin-left: 75rpx;
+            padding-bottom: 40rpx;
+            margin-top: 30rpx;
+            margin-bottom: 20rpx;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 1px;
+                top: -20rpx;
+                bottom: -30rpx;
+                left: -30rpx;
+                background-color: rgb(160, 57, 57);
+            }
+
+            .content-text {
+                padding-top: 40rpx;
+                font-size: 25rpx;
+                color: #666;
+                margin-left: 20rpx;
+                padding-right: 20rpx;
+
+                .content-type-icon {
+                    margin: 0 20rpx;
+                    padding-right: 10rpx;
+                    position: relative;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 15rpx;
+                        height: 15rpx;
+                        border-radius: 50%;
+                        background-color: #e68179;
+                    }
+                }
+            }
+
+        }
+    }
+}

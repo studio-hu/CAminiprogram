@@ -1,0 +1,12 @@
+var format = function (id, createtime) {
+    var y = createtime.indexOf('年')
+    var m = createtime.indexOf('月')
+    var d = createtime.indexOf('日')
+    var year = createtime.slice(0, y)
+    var month = createtime.slice(y + 1, m) < 10 ? "0" + createtime.slice(y + 1, m) : createtime.slice(y + 1, m)
+    var date = createtime.slice(m + 1, d) < 10 ? "0" + createtime.slice(m + 1, d) : createtime.slice(m + 1, d)
+    var id = id < 10 ? "00000" + id : id < 100 ? "0000" + id : id < 1000 ? "000" + id : id < 10000 ? "00" + id : id < 100000 ? "0" + id : id
+    return year + month + date + id
+}
+
+module.exports.format = format

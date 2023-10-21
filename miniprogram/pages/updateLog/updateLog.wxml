@@ -1,0 +1,19 @@
+<!--pages/updateLog/updateLog.wxml-->
+<van-nav-bar title="更新日志" fixed placeholder border="{{false}}" bind:click-left="onClickLeft">
+    <van-icon name="arrow-left" slot="left" />
+</van-nav-bar>
+<view class="list">
+    <view class="item" wx:for="{{list}}" wx:key="version">
+        <view class="header">
+            <view class="header-icon"></view>
+            <view class="header-v">{{item.version}}<text class="header-date">{{item.date}}</text></view>
+        </view>
+        <view class="content-box" >
+            <view class="content-text" wx:for="{{item.detail}}" wx:key="index">
+                <text class="content-type-icon"></text>
+                {{item}}
+            </view>
+        </view>
+    </view>
+</view>
+  

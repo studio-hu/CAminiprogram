@@ -1,0 +1,76 @@
+/* pages/showRepair/showRepair.wxss */
+.container {
+    overflow: auto;
+    padding-bottom: 100rpx;
+
+    .btn {
+        width: 650rpx;
+        margin: 0 auto;
+
+        .submit-btn {
+            border-radius: 20rpx;
+        }
+    }
+
+    .card {
+        margin: 50rpx 0;
+
+        .value {
+            color: #000;
+        }
+
+        .title {
+            font-size: 34rpx;
+            font-weight: bold;
+            position: relative;
+            padding-left: 20rpx;
+
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10rpx;
+                height: 40rpx;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: #E54D42;
+            }
+        }
+
+        .upload-img {
+            // display: flex;
+            // flex-wrap: wrap;
+            position: relative;
+        }
+    }
+
+
+}
+
+.popup {
+    // background-color: #8a3636;
+    width: 80%;
+    margin: 50rpx auto;
+
+    .title {
+        font-size: 34rpx;
+        font-weight: bold;
+    }
+
+    .remark {
+        border: 1px #ececec solid;
+        box-shadow: 0 0rpx 10rpx 1rpx rgba(0, 0, 0, 0.1);
+        border-radius: 20rpx;
+        overflow: hidden;
+        margin: 40rpx 0;
+
+    }
+
+    .btn {
+        padding: 40rpx 0;
+
+        .submit-btn {
+            border-radius: 20rpx;
+        }
+    }
+}

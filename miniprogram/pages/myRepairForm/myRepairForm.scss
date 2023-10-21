@@ -1,0 +1,70 @@
+/* pages/myRepairForm/myRepairForm.wxss */
+.container {
+
+    position: relative;
+    .active{
+        color: #E54D42 ;
+    }
+    .wrap {
+        position: fixed;
+        left: 0;
+        right: 0;
+    }
+
+    .my-repair-list {
+        min-height: 70vh;
+        // background-color: royalblue;
+        padding-top: 100rpx;
+        // padding-bottom: 20vh;
+        padding-bottom: 100rpx;
+
+        .my-repair-item {
+            width: 650rpx;
+            // height: 300rpx;
+            border-radius: 20rpx;
+            background-color: #ffffff;
+            box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1);
+            margin: 40rpx auto;
+            // padding-bottom: 10rpx;
+
+            .head {
+                box-sizing: border-box;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                // background-color: #b43030;
+                // margin: 0 20rpx;
+                padding: 30rpx;
+
+                &>text:nth-child(1) {
+                    font-size: 26rpx;
+                    font-weight: bold;
+                }
+            }
+
+            .msg {
+                display: flex;
+                flex-direction: column;
+                padding: 20rpx 0;
+
+                .msg-item {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 26rpx;
+                    padding: 10rpx 40rpx;
+                    text:nth-child(1) {
+                        color: #969799;
+                    }
+                    text:nth-child(2) {
+                        color: #2c2c2c;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+}

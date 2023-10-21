@@ -1,0 +1,24 @@
+/* pages/personalInformation/personalInformation.wxss */
+.card {
+    margin-top: 50rpx !important;
+
+    .avatar {
+        display: flex;
+        justify-content: center;
+    }
+
+
+}
+
+.btn {
+    width: 650rpx;
+    margin: 50rpx auto;
+
+    .submit-btn {
+        border-radius: 20rpx;
+    }
+}
+
+.van-field__error-message {
+    color: #cccccc !important;
+}

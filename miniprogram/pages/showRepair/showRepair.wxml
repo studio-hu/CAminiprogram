@@ -1,0 +1,121 @@
+<!--pages/showRepair/showRepair.wxml-->
+<van-nav-bar title="维修单详情" fixed placeholder border="{{false}}" bind:click-left="onClickLeft" custom-class="navbar"
+    title-class="navtitle">
+    <van-icon name="arrow-left" slot="left" />
+</van-nav-bar>
+<view class="container">
+    <!-- 报修人员 -->
+    <view class="card">
+        <van-cell-group inset>
+            <van-cell>
+                <view slot="title">
+                    <view class="title">报修人员</view>
+                </view>
+            </van-cell>
+            <van-cell title="姓名" title-style="color:#969799;" value="{{currentValue.realname}}" value-class="value" />
+            <van-cell title="学号" title-style="color:#969799;" value="{{currentValue.stunum}}" value-class="value" />
+            <van-cell title="手机号" title-style="color:#969799;" value="{{currentValue.phone}}" value-class="value" />
+        </van-cell-group>
+    </view>
+    <!-- 维修信息 -->
+    <view class="card">
+        <van-cell-group inset>
+            <van-cell>
+                <view slot="title">
+                    <view class="title">维修信息</view>
+                </view>
+            </van-cell>
+            <van-cell title="电脑类型" title-style="color:#969799;" value="{{currentValue.computertype}}"
+                value-class="value" />
+            <van-cell title="电脑型号" title-style="color:#969799;" value="{{currentValue.computername}}"
+                value-class="value" />
+            <van-cell title="问题描述" title-style="color:#969799;" value="{{currentValue.reason}}" value-class="value" />
+            <van-cell title="图片" title-style="color:#969799;" title-width="190rpx" title-class="img">
+                <view class="upload-img">
+                    <van-uploader preview-size="200rpx" max-count="0" file-list="{{ img }}" />
+                </view>
+            </van-cell>
+        </van-cell-group>
+    </view>
+    <!-- 预约信息 -->
+    <view class="card">
+        <van-cell-group inset>
+            <van-cell>
+                <view slot="title">
+                    <view class="title">预约信息</view>
+                </view>
+            </van-cell>
+            <van-cell title="预约时间" title-style="color:#969799;" value="{{currentValue.createtime}}"
+                value-class="value" />
+            <van-cell title="宿舍号" title-style="color:#969799;" value="{{currentValue.dormnum}}" value-class="value" />
+        </van-cell-group>
+    </view>
+    <!-- 维修人员 -->
+    <block wx:if="{{currentValue.state!==0}}">
+        <view class="card">
+            <van-cell-group inset>
+                <van-cell>
+                    <view slot="title">
+                        <view class="title">维修人员</view>
+                    </view>
+                </van-cell>
+                <van-cell title="姓名" title-style="color:#969799;" value="{{currentValue.name}}" value-class="value" />
+                <van-cell title="接单时间" title-style="color:#969799;" value="{{currentValue.updatetime}}"
+                    value-class="value" />
+            </van-cell-group>
+        </view>
+    </block>
+    <!-- 维修单备注 -->
+    <block wx:if="{{currentValue.state==2}}">
+        <view class="card">
+            <van-cell-group inset>
+                <van-cell>
+                    <view slot="title">
+                        <view class="title">备注</view>
+                    </view>
+                </van-cell>
+                <van-cell title-style="color:#969799;" value-class="value">
+                    <view style="text-align: left;">
+                        {{currentValue.remark}}
+                    </view>
+
+                </van-cell>
+
+            </van-cell-group>
+        </view>
+    </block>
+
+    <block wx:if="{{admin==='1'&&state!=='2'}}">
+        <view class="btn">
+            <van-button color="{{state==='0'?'#E54D42':'#07c160'}}" block custom-class="submit-btn"
+                bindtap="handleRepair" data-state="{{state}}">
+                {{state==='0'?'接单':'此单完成'}}</van-button>
+        </view>
+    </block>
+
+
+
+
+
+</view>
+<!-- 消息提示 -->
+<van-toast id="van-toast" />
+<!-- 对话框 -->
+<van-dialog show="{{ showDialog }}" show-cancel-button before-close="{{beforeClose}}"
+    message="{{state==='0'?'确认接单吗':'此单确认完成吗'}}">
+</van-dialog>
+<!-- 备注 -->
+<van-popup show="{{ remarkshow }}" bind:close="showRemark" round position="bottom" custom-style="">
+    <view class="popup">
+        <view class="title">
+            维修单备注
+        </view>
+        <view class="remark">
+            <van-field model:value="{{ remark }}" type="textarea" placeholder="请输入维修单备注" autosize="{{size}}"
+                border="{{ true }}" center show-confirm-bar="{{false}}" />
+        </view>
+        <view class="btn">
+            <van-button color="#07c160" block custom-class="submit-btn" bindtap="handleDone">完成</van-button>
+        </view>
+    </view>
+</van-popup>

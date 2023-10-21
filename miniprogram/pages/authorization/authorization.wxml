@@ -1,0 +1,22 @@
+<!--pages/authorization/authorization.wxml-->
+<van-nav-bar fixed placeholder border="{{false}}">
+    <view slot="title" style="font-weight: bold;">
+        计算机协会
+    </view>
+</van-nav-bar>
+<view class="container">
+    <view class="img">
+        <van-image width="100%" height="100%" fit="widthFix" src="/static/images/ca.png" />
+    </view>
+    <span>欢迎来到计协</span>
+    <span>计协报修小程序需要您的授权</span>
+    <text>计协不会将你的信息提供给第三方</text>
+    <text>仅用于报修等个人信息</text>
+    <view class="btn-box">
+        <van-button type="info" block custom-class="btn" color="#E54D42" bindtap="handleConfirm" >授权登录</van-button>
+    </view>
+</view>
+<!-- 对话框 -->
+<van-dialog id="van-dialog" />
+<!-- 消息提示 -->
+<van-toast id="van-toast" />

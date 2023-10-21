@@ -1,0 +1,15 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<van-nav-bar title="关于我们" fixed placeholder border="{{false}}" bind:click-left="onClickLeft">
+    <van-icon name="arrow-left" slot="left" />
+</van-nav-bar>
+<view class="about">
+    <view class="title">
+        关于GR计协
+    </view>
+    <view class="content">
+        <view class="text">本小程序是由广州软件学院计协开发的，暂且只有报修功能，之后会对该系统进行优化以及开发新功能。</view>
+        <view class="text">欢迎大家对该系统进行反馈，可通过微信公众号"GR计协"或邮箱"ca.sise@outlook.com"进行反馈。</view>
+        <view class="text">后续我们会为小程序开发反馈等功能! </view>
+        <view class="text">感谢大家对计协的支持! </view>
+    </view>
+</view>

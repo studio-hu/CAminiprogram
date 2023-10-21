@@ -1,0 +1,96 @@
+<!--pages/index/index.wxml-->
+<van-nav-bar title="首页" fixed placeholder border="{{false}}" />
+<view class="container">
+    <view>
+        <swiper indicator-dots autoplay interval="{{4500}}" duration="{{1500}}">
+            <swiper-item class="img-item" wx:for="{{imgList}}" wx:for-item="url" wx:key="url">
+                <!-- https://picsum.photos/seed/1/390/150 -->
+                <van-image use-loading-slot width="100%" height="100%" fit="widthFix" src="{{url}}">
+                    <van-loading slot="loading" type="spinner" size="20" vertical />
+                </van-image>
+            </swiper-item>
+        </swiper>
+    </view>
+    <!-- 用户模块 -->
+    <view class="menuList">
+        <van-grid column-num="2" border="{{ true }}" gutter="{{ 20 }}" clickable>
+            <van-grid-item use-slot content-class="grid-item" url="../repair/repair">
+                <view class="item">
+                    <view class="image-item bg1">
+                        <van-image use-loading-slot custom-class="img" src="/static/images/repair.png">
+                            <van-loading slot="loading" type="spinner" size="20" vertical />
+                        </van-image>
+                    </view>
+                    <view class="text-item">
+                        <view class="title">维修</view>
+                        <view class="desc">提交维修单</view>
+                    </view>
+                </view>
+            </van-grid-item>
+            <van-grid-item use-slot content-class="grid-item" url="../myRepairForm/myRepairForm?tab=0">
+                <view class="item">
+                    <view class="image-item bg2">
+                        <van-image use-loading-slot custom-class="img" src="/static/images/history.png">
+                            <van-loading slot="loading" type="spinner" size="20" vertical />
+                        </van-image>
+                    </view>
+                    <view class="text-item">
+                        <view class="title">历史</view>
+                        <view class="desc">查看维修单</view>
+                    </view>
+                </view>
+            </van-grid-item>
+            <van-grid-item use-slot content-class="grid-item" bind:click="toast">
+                <view class="item">
+                    <view class="image-item bg3">
+                        <van-image use-loading-slot custom-class="img" src="/static/images/luckyDraw.png">
+                            <van-loading slot="loading" type="spinner" size="20" vertical />
+                        </van-image>
+                    </view>
+                    <view class="text-item ">
+                        <view class="title">抽奖</view>
+                        <view class="desc">领取小礼品</view>
+                    </view>
+                </view>
+            </van-grid-item>
+            <van-grid-item use-slot content-class="grid-item" bind:click="toast">
+                <view class="item">
+                    <view class="image-item bg4">
+                        <van-image use-loading-slot custom-class="img" src="/static/images/activity.png">
+                            <van-loading slot="loading" type="spinner" size="20" vertical />
+                        </van-image>
+                    </view>
+                    <view class="text-item">
+                        <view class="title">活动</view>
+                        <view class="desc">快来参与吧</view>
+                    </view>
+                </view>
+            </van-grid-item>
+        </van-grid>
+    </view>
+    <!-- 管理员模块 -->
+    <block wx:if="{{repair===1}}">
+        <view class="menuList">
+            <van-grid column-num="1" border="{{ true }}" gutter="{{ 20 }}" clickable>
+                <van-grid-item use-slot content-class="grid-item" url="../allRepairForm/allRepairForm">
+                    <view class="tag-admin">
+                        <van-tag color="#E54D42" size="large">管理员</van-tag>
+                    </view>
+
+                    <view class="item">
+                        <view class="image-item bg1">
+                            <van-image use-loading-slot custom-class="img" src="/static/images/admin.png">
+                                <van-loading slot="loading" type="spinner" size="20" vertical />
+                            </van-image>
+                        </view>
+                        <view class="text-item">
+                            <view class="title">维修单</view>
+                            <view class="desc">查询维修单</view>
+                        </view>
+                    </view>
+                </van-grid-item>
+            </van-grid>
+        </view>
+    </block>
+</view>
+<van-toast id="van-toast" />
