@@ -38,7 +38,8 @@
             <van-field model:value="{{ computerModels }}" label="电脑型号" placeholder="请输入电脑型号" label-class="label"
                 data-type="computerModels" bind:change="onChange" required />
             <van-field model:value="{{ problemDescription }}" label="问题描述" type="textarea" placeholder="请输入报修内容描述"
-                label-class="label" autosize data-type="problemDescription" bind:change="onChange" required show-confirm-bar="{{false}}"/>
+                label-class="label" autosize data-type="problemDescription" bind:change="onChange" required
+                show-confirm-bar="{{false}}" />
             <van-cell title="图片" title-width="190rpx" title-class="img" label="大小限制为2M">
                 <view class="upload-img">
                     <van-uploader max-count="1" image-fit="aspectFill" file-list="{{ fileList }}"
@@ -78,4 +79,4 @@
 <van-calendar show="{{ show }}" show-confirm="{{ false }}" bind:close="onClose" bind:confirm="onConfirm"
     color="#E54D42" />
 <!-- 消息提示 -->
-<van-toast id="van-toast" />
+<van-toast id="van-toast" zIndex="5000"/>

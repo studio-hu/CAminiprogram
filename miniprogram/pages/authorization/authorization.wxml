@@ -15,8 +15,28 @@
     <view class="btn-box">
         <van-button type="info" block custom-class="btn" color="#E54D42" bindtap="handleConfirm" >授权登录</van-button>
     </view>
+
+
 </view>
 <!-- 对话框 -->
 <van-dialog id="van-dialog" />
 <!-- 消息提示 -->
 <van-toast id="van-toast" />
+<!-- 用户隐私协议 -->
+<van-popup show="{{ showPrivacyPopup }}" round position="bottom" custom-style="height: 33%" lock-scroll="{{true}}">
+    <view class="privacy-container">
+        <view class="privacy-title">
+            用户隐私保护提示
+        </view>
+        <view class="privacy-desc">
+            感谢您使用本应用，您使用本应用的服务之前请仔细阅读并同意<span
+                class="privacy-docs" bindtap="navigatorToPrivacyAgreement">《广软计协小程序隐私保护指引》</span>。当您点击“同意”并开始使用产品服务时，即表示您已理解并同意该条款内容，该条款将对您产生法律约束力。如您拒绝，将无法使用相应服务。
+        </view>
+        <view class="privacy-btn">
+                <button  class="privacy-btn-item" bindtap="closePrivacyPopup" >不同意</button>
+                <button id="agree-btn" class="privacy-btn-item authorization" open-type="agreePrivacyAuthorization" bindagreeprivacyauthorization="handleAgreePrivacyAuthorization">同意</button>
+
+                <!-- <button id="agree-btn" class="privacy-btn-item authorization" open-type="getPhoneNumber|agreePrivacyAuthorization" bindagreeprivacyauthorization="handleAgreePrivacyAuthorization">同意</button> -->
+        </view>
+    </view>
+</van-popup>

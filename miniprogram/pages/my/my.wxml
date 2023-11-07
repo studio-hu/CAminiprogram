@@ -5,7 +5,7 @@
     <!-- <van-button bindtap="login">登录</van-button> -->
     <view class="userMessage" bindtap="personalInformation">
         <van-image round use-loading-slot custom-class="avatar" fit="cover"
-            src="{{headshot==='http://www.seig.castudio.work/image/Grua.jpg'}}">
+            src="{{headshot}}">
             <van-loading slot="loading" type="spinner" size="20" vertical />
         </van-image>
         <view>

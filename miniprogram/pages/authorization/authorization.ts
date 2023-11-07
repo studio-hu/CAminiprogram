@@ -6,7 +6,7 @@ import { getUserInfo } from "../../utils/api/api"
 type Action = 'confirm' | 'cancel' | 'overlay';
 const login = async () => {
     let { code } = await wx.login()
-    console.log(code)
+    // console.log(code)
     let res: any = await getUserInfo({ code })
     let openid: string = res.data.data.openid
     if (openid) {
@@ -39,8 +39,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        //用户隐私协议弹出层
+        showPrivacyPopup: false
     },
+
 
     handleConfirm() {
         /**
@@ -58,12 +60,46 @@ Page({
             // 取消
         })
     },
+    //控制用户隐私授权弹出层
+    closePrivacyPopup() {
+        // wx.navigateBack()
+        // this.setData({ showPrivacyPopup: false });
+        wx.exitMiniProgram()
+        console.log("asd");
+    },
+    //用户同意授权
+    handleAgreePrivacyAuthorization() {
+        // Toast.success('授权成功');
+        this.setData({ showPrivacyPopup: false })
+    },
+    //跳转用户隐私协议详情
+    navigatorToPrivacyAgreement() {
+        wx.openPrivacyContract({
+            success: () => {}, // 打开成功
+            fail: () => {
+                Toast.fail("服务繁忙")
+            }, // 打开失败
+            complete: () => {}
+          })
+    },
+  
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad() {
-
+        //校验用户是否已经授权
+        wx.getPrivacySetting({
+            success: res => {
+                console.log(res) // 返回结果为: res = { needAuthorization: true/false, privacyContractName: '《xxx隐私保护指引》' }
+                if (res.needAuthorization) {
+                    // 需要弹出隐私协议
+                    this.setData({
+                        showPrivacyPopup: true
+                    })
+                }
+            }
+        })
     },
 
     /**

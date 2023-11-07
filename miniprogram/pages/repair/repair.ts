@@ -33,7 +33,7 @@ interface Irepair {
     // 日期选择器
     show: boolean,
     // 图片
-    fileList: IfileList[]
+    fileList: IfileList[],
 }
 Page({
 
@@ -202,6 +202,7 @@ Page({
             fileList
         })
     },
+    
 
     /**
      * 生命周期函数--监听页面加载
@@ -209,7 +210,7 @@ Page({
     onLoad() {
         let openid: string = wx.getStorageSync('openid')
         getUserByOpenId({ openid }).then(res => {
-            console.log(res);
+            // console.log(res);
             if (res.data.code === 200) {
                 // @ts-ignore
                 let { stunum, realname, phone, dormnum } = res.data.data[0]
@@ -221,6 +222,8 @@ Page({
                 })
             }
         })
+
+      
     },
 
     /**
